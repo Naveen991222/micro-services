@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+data:
+  my-property: my-value
+spec:
+  containers:
+    - name: my-container
+      image: my-image
+      env:
+        - name: MY_PROPERTY
+          valueFrom:
+            configMapKeyRef:
+              name: my-configmap
+              key: my-property
